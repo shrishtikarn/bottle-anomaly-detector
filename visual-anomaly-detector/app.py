@@ -39,7 +39,7 @@ def calculate_similarity(feat1, feat2):
 # Load a single reference image (good bottle image)
 @st.cache_resource
 def get_reference_embedding():
-    ref_img = Image.open("./normal_samples/bottle/train/good/000.png").convert("RGB")
+    ref_img = Image.open("./normal_samples/bottle/test/good/000.png").convert("RGB")
     ref_tensor = transform(ref_img).unsqueeze(0)
     with torch.no_grad():
         ref_features = model(ref_tensor)
