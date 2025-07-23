@@ -39,7 +39,7 @@ def calculate_similarity(feat1, feat2):
 # Load a single reference image (good bottle image)
 @st.cache_resource
 def get_reference_embedding():
-    ref_img = Image.open("./normal_samples/bottle/test/good/000.png").convert("RGB")
+    ref_img = Image.open("./visual-anomaly-detector/normal_samples/bottle/good/000.png").convert("RGB")
     ref_tensor = transform(ref_img).unsqueeze(0)
     with torch.no_grad():
         ref_features = model(ref_tensor)
@@ -50,7 +50,7 @@ ref_embedding = get_reference_embedding()
 # When an image is uploaded
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # Preprocess
     input_tensor = transform(image).unsqueeze(0)
